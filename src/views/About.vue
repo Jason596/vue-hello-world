@@ -7,10 +7,12 @@
     <!-- redirection model -->
     <input type="text" v-model="message">
     <!-- test bool  -->
-    <p v-if="true">Weather is good</p>
+    <p v-if="bool">Weather is good</p>
+    <br>
     <!-- function to reverse the string -->
     <span @click="res">{{message}}</span>
-
+    <p @click="getInfo">enter value</p>
+    <br>
     <p v-for="(item, index) in list"
        :key = item
     >
@@ -33,17 +35,19 @@ export default {
     };
   },
   methods: {
-    getInfor() {
+    getInfo() {
       alert(this.message);
     },
     res() {
+      alert('i been hit');
       this.message = this.message.split('').reverse().join('');
     },
   },
+  // it will set the bool to false after 5s, so will render the dom
   mounted() {
     setTimeout(() => {
       this.bool = false;
-    }, 3000);
+    }, 5000);
   },
 };
 </script>
