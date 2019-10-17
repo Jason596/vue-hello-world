@@ -19,8 +19,9 @@
     {{item}} {{index}}
     </p>
     <br>
+    <!-- pass the props call todoData to the compoent, the value is list in the parent -->
     <todo-list
-    :todoData="list"
+    :todoData="todoItemList"
     >
     </todo-list>
   </div>
@@ -40,6 +41,16 @@ export default {
       message: 'Good Morning, Jason !!!',
       message1: `New Zealand${new Date().toLocaleString()}`,
       list: ['123', '456', '789'],
+      todoItemList: [{
+        value: '123',
+        status: false,
+      }, {
+        value: '456',
+        status: false,
+      }, {
+        value: '789',
+        status: false,
+      }],
       bool: true,
     };
   },
@@ -54,6 +65,9 @@ export default {
   },
   // it will set the bool to false after 5s, so will render the dom
   mounted() {
+    // setTimeout(() => {
+    //   this.list.push('jason is testing props');
+    // }, 3000);
     setTimeout(() => {
       this.bool = false;
     }, 5000);

@@ -1,6 +1,13 @@
 <template>
   <div>
-    <p v-for="item in todoData" :key="item">{{item}}</p>
+    <p
+        v-for="(item, index) in list"
+        :class="{'done': item.status}"
+        :key="item.value"
+        @click="toggleList(index)"
+    >
+        {{item.value}}
+    </p>
   </div>
 </template>
 
@@ -8,13 +15,22 @@
 export default {
   data() {
     return {
-      list: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+      list: this.todoData, // dont direct modify the data from parent, sign to a child variable.
     };
   },
-  props: ['todoData'],
+  methods: {
+    toggleList(index) {
+      // this.toggleList[index].status = !this.toggleList(index).status
+      // this.$set(this.list[index], 'status', !this.list[index].status);
+      this.list[index].status = !this.list[index].status;
+    },
+  },
+  props: ['todoData'], // decalre this child will received a props from parent.
 };
 </script>
 
 <style>
-
+.done{
+    background-color: yellow;
+}
 </style>
