@@ -18,14 +18,23 @@
     >
     {{item}} {{index}}
     </p>
-
+    <br>
+    <todo-list
+    :todoData="list"
+    >
+    </todo-list>
   </div>
 </template>
 
 
 <script>
-export default {
+import TodoList from '@/components/TodoList.vue';
 
+
+export default {
+  components: {
+    TodoList,
+  },
   data() {
     return {
       message: 'Good Morning, Jason !!!',
